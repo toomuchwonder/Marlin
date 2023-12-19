@@ -1251,8 +1251,8 @@
 //#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 1000 } // OEM
 //#define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 2000 } // Conservative
 //#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 1500, 3000 } // Conservative+
-#define DEFAULT_MAX_ACCELERATION      { 4000, 4000, 2000, 4000 } // Conservative++
-//#define DEFAULT_MAX_ACCELERATION      { 5000, 5000, 2500, 5000 } // Performance target?
+#define DEFAULT_MAX_ACCELERATION      { 4000, 4000, 1500, 4000 } // Conservative++
+//#define DEFAULT_MAX_ACCELERATION      { 5000, 5000, 1500, 5000 } // Performance target?
 //#define DEFAULT_MAX_ACCELERATION      { 20000, 20000, 10000, 20000 } // Voron!
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
@@ -1311,7 +1311,7 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.02 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.1   // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1552,7 +1552,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 38, 0, -3 }
+#define NOZZLE_TO_PROBE_OFFSET { 38, 0, -2 }
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
