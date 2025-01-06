@@ -30,7 +30,7 @@
 #include "../module/planner.h"
 #include "../module/stepper.h" // for block_t
 #include "../gcode/queue.h"
-#include "../feature/pause.h" // for did_pause_print
+#include "pause.h" // for did_pause_print
 #include "../MarlinCore.h" // for printingIsActive()
 
 #include "../inc/MarlinConfig.h"
@@ -50,6 +50,8 @@
 #if DISABLED(FILAMENT_MOTION_SENSOR) || ENABLED(FILAMENT_SWITCH_AND_MOTION)
   #define HAS_FILAMENT_SWITCH 1
 #endif
+
+#define FILAMENT_IS_OUT() (READ(FIL_RUNOUT_PIN) == FIL_RUNOUT_STATE)
 
 typedef Flags<
           #if NUM_MOTION_SENSORS > NUM_RUNOUT_SENSORS
@@ -159,7 +161,7 @@ class TFilamentMonitor : public FilamentMonitorBase {
         if (ran_out) {
           #if ENABLED(FILAMENT_RUNOUT_SENSOR_DEBUG)
             SERIAL_ECHOPGM("Runout Sensors: ");
-            for (uint8_t i = 0; i < 8; ++i) SERIAL_ECHO('0' + char(runout_flags[i]));
+            for (uint8_t i = 0; i < 8; ++i) SERIAL_CHAR('0' + char(runout_flags[i]));
             SERIAL_ECHOLNPGM(" -> ", extruder, " RUN OUT");
           #endif
 
@@ -340,7 +342,6 @@ class FilamentSensorBase {
         TERN_(HAS_FILAMENT_SWITCH, switch_sensor.run());
       }
   };
-
 
 /********************************* RESPONSE TYPE *********************************/
 
