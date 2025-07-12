@@ -1324,7 +1324,7 @@
  */
 // Marlin -> #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
 // OEM -> #define DEFAULT_MAX_FEEDRATE          { 200, 200, 4, 70 }
-#define DEFAULT_MAX_FEEDRATE          { 500, 500, 50, 100 }
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 30, 100 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -2479,7 +2479,7 @@
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
   #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
-  //#define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
+  #define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
 #endif
 
 // @section host
